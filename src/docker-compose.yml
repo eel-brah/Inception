@@ -12,6 +12,7 @@ services:
       - wordpress
     networks:
       - wordpress_network
+    restart: unless-stopped
 
   wordpress:
     build:
@@ -28,6 +29,7 @@ services:
       - mariadb
     networks:
       - wordpress_network
+    restart: unless-stopped
 
   mariadb:
     build:
@@ -44,6 +46,7 @@ services:
       - "3306:3306"
     networks:
       - wordpress_network
+    restart: unless-stopped
 
 volumes:
   wordpress_files:
