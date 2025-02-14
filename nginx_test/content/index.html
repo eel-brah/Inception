@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#algorithms">Algorithms</a></li>
+            <li><a href="#data-structures">Data Structures</a></li>
+            <li><a href="#programming">Programming</a></li>
+        </ul>
+    </nav>
+
+    <div class="content" id="home">
+        <h1>Welcome to Computer Science Hub</h1>
+        
+        <div class="card">
+            <h2>What is Computer Science?</h2>
+            <p>Computer Science is the study of computers and computational systems. Unlike electrical and computer engineers, computer scientists deal mainly with software and software systems; this includes their theory, design, development, and application.</p>
+            <p>Principal areas of study within Computer Science include artificial intelligence, computer systems and networks, security, database systems, human computer interaction, vision and graphics, numerical analysis, programming languages, software engineering, bioinformatics, and theory of computing.</p>
+        </div>
+
+        <div class="topic-grid">
+            <div class="card">
+                <h2>Core Topics</h2>
+                <ul>
+                    <li>Algorithms and Data Structures</li>
+                    <li>Programming Languages</li>
+                    <li>Computer Architecture</li>
+                    <li>Operating Systems</li>
+                    <li>Database Management</li>
+                    <li>Software Engineering</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Advanced Areas</h2>
+                <ul>
+                    <li>Artificial Intelligence</li>
+                    <li>Machine Learning</li>
+                    <li>Computer Networks</li>
+                    <li>Cybersecurity</li>
+                    <li>Cloud Computing</li>
+                    <li>Quantum Computing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="algorithms">
+        <h1>Algorithms</h1>
+        
+        <div class="card">
+            <h2>Introduction to Algorithms</h2>
+            <p>An algorithm is a step-by-step procedure for solving a problem or accomplishing a task. In computer science, algorithms are essential for processing information, performing calculations, and automating tasks.</p>
+            
+            <h2>Example: Binary Search Algorithm</h2>
+            <div class="code-block">
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        
+        if (arr[mid] === target) return mid;
+        if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    
+    return -1;
+}</div>
+        </div>
+
+        <div class="card">
+            <h2>Common Algorithm Types</h2>
+            <ul>
+                <li>Sorting Algorithms (Bubble Sort, Quick Sort, Merge Sort)</li>
+                <li>Search Algorithms (Linear Search, Binary Search)</li>
+                <li>Graph Algorithms (DFS, BFS, Dijkstra's)</li>
+                <li>Dynamic Programming</li>
+                <li>Greedy Algorithms</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content" id="data-structures">
+        <h1>Data Structures</h1>
+
+        <div class="card">
+            <h2>Understanding Data Structures</h2>
+            <p>Data structures are specialized formats for organizing, processing, retrieving and storing data. Different data structures serve different purposes and have different advantages and limitations.</p>
+        </div>
+
+        <div class="topic-grid">
+            <div class="card">
+                <h2>Basic Data Structures</h2>
+                <ul>
+                    <li>Arrays</li>
+                    <li>Linked Lists</li>
+                    <li>Stacks</li>
+                    <li>Queues</li>
+                    <li>Hash Tables</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Advanced Data Structures</h2>
+                <ul>
+                    <li>Trees (Binary, AVL, Red-Black)</li>
+                    <li>Graphs</li>
+                    <li>Heaps</li>
+                    <li>Tries</li>
+                    <li>B-Trees</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="programming">
+        <h1>Programming Fundamentals</h1>
+
+        <div class="card">
+            <h2>Basic Concepts</h2>
+            <p>Programming is the process of creating a set of instructions that tell a computer how to perform a task. Here are some fundamental concepts:</p>
+            
+            <ul>
+                <li>Variables and Data Types</li>
+                <li>Control Structures (if/else, loops)</li>
+                <li>Functions and Methods</li>
+                <li>Object-Oriented Programming</li>
+                <li>Error Handling</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Example: Simple Function</h2>
+            <div class="code-block">
+def calculate_average(numbers):
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
+
+# Example usage
+scores = [85, 92, 78, 90, 88]
+average = calculate_average(scores)
+print(f"The average score is: {average}")</div>
+        </div>
+
+
+<button class="learn-btn" onclick="window.location.href='./coding/index.html';">Learn Coding</button>
+    </div>
+
+    <footer>
+        <p>© 2025 Computer Science Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

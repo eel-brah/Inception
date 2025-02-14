@@ -1,0 +1,105 @@
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Navigation Bar */
+nav {
+    background: #222;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    margin: 5px;
+    font-size: 18px;
+    display: inline-block;
+    transition: background 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: #007BFF;
+}
+
+/* Main Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Headings */
+h2 {
+    color: #222;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Paragraphs */
+p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* List Styling */
+ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Call-to-Action Button */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 18px;
+    transition: background 0.3s ease-in-out;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
