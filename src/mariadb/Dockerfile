@@ -28,6 +28,3 @@ EXPOSE 3306
 
 # Set the entrypoint script
 ENTRYPOINT ["/entrypoint.sh"]
-
-# Default command 
-CMD ["mariadbd", "--user=mysql"]

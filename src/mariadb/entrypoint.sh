@@ -11,20 +11,19 @@ until mysql -u root --password="$MYSQL_ROOT_PASSWORD" -e "SELECT 1" >/dev/null 2
     sleep 1
 done
 
-# Create database if needed
-if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
-    mysql -u root --password="$MYSQL_ROOT_PASSWORD" <<-EOSQL
-        CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
-        CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
-        GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
-        FLUSH PRIVILEGES;
+# Initialize database and users
+mysql -u root --password="$MYSQL_ROOT_PASSWORD" <<-EOSQL
+    CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+    DROP USER IF EXISTS '$MYSQL_USER'@'%';
+    CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+    GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
+
+    FLUSH PRIVILEGES;
 EOSQL
-fi
 
 # Stop the temporary MariaDB instance
 kill -s TERM "$pid"
 wait "$pid"
-
 
 # Start MariaDB in foreground
 exec mariadbd --user=mysql

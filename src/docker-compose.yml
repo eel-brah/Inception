@@ -1,3 +1,4 @@
+ # /home/login/data
 services:
   nginx:
     build:
@@ -42,8 +43,6 @@ services:
       - MYSQL_PASSWORD=secure_password
     volumes:
       - wordpress_db:/var/lib/mysql:rw
-    ports:
-      - "3306:3306"
     networks:
       - wordpress_network
     restart: unless-stopped

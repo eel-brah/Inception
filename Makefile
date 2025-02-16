@@ -21,7 +21,7 @@ restart: down up
 fclean: clean
 	docker system prune -a --volumes
 
-re: fclean all
+re: fclean up
 
 ps:
 	docker ps
