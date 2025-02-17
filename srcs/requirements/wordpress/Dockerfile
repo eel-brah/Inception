@@ -1,11 +1,6 @@
-FROM alpine:3.21.2
-# RUN <<EOF
-# apt-get update;
-# apt-get install -y apache2-utils;
-# rm -rf /var/lib/apt/lists/*;
-# EOF
+FROM alpine:3.20
+
 RUN apk add --no-cache \
-    php83 \
     php83-fpm \
     php83-mysqli \
     php83-json \
@@ -23,17 +18,16 @@ RUN apk add --no-cache \
     php83-gd \
     curl
 
-# Copy a custom PHP-FPM configuration file 
-COPY www.conf /etc/php83/php-fpm.d/www.conf
-
 # Install WP-CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     chmod +x wp-cli.phar && \
     mv wp-cli.phar /usr/local/bin/wp
 
-WORKDIR /var/www/html
+# Configure PHP-FPM
+COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
 
-# Download the latest WordPress release, extract it, and clean up
+# Download the latest WordPress release
+WORKDIR /var/www/html
 RUN curl -O https://wordpress.org/latest.tar.gz && \
     tar -xzf latest.tar.gz && \
     mv wordpress/* . && \
@@ -43,17 +37,11 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 RUN chown -R nobody:nobody /var/www/html && \
     chmod -R 755 /var/www/html
 
-# Copy a pre-configured wp-config.php file into the WordPress directory
-COPY ./wp-config.php /var/www/html
-RUN chmod 644 /var/www/html/wp-config.php
-
-# Copy the setup-users.sh script
-COPY setup-users.sh /usr/local/bin/setup-users.sh
-RUN chmod +x /usr/local/bin/setup-users.sh
-
-# Copy the custom entrypoint script
+COPY ./conf/wp-config.php /var/www/html/
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+
+RUN chmod 644 /var/www/html/wp-config.php && \
+    chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 9000
 

@@ -1,11 +1,9 @@
- # /home/login/data
 services:
   nginx:
     build:
-      context: ./nginx
+      context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
       - "4443:443"
     volumes:
       - wordpress_files:/var/www/html
@@ -17,7 +15,7 @@ services:
 
   wordpress:
     build:
-      context: ./wordpress
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
     environment:
       - WORDPRESS_DB_HOST=mariadb
@@ -34,7 +32,7 @@ services:
 
   mariadb:
     build:
-      context: ./mariadb
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
     environment:
       - MYSQL_ROOT_PASSWORD=root_password
@@ -42,7 +40,7 @@ services:
       - MYSQL_USER=wordpress_user
       - MYSQL_PASSWORD=secure_password
     volumes:
-      - wordpress_db:/var/lib/mysql:rw
+       - wordpress_db:/var/lib/mysql
     networks:
       - wordpress_network
     restart: unless-stopped
