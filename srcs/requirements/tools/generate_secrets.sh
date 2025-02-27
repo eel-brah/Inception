@@ -22,3 +22,8 @@ if [ ! -f "$SSL_KEY" ] || [ ! -f "$SSL_CRT" ]; then
         -subj "/C=MA/ST=State/L=City/O=Org/CN=localhost"
     chmod 600 "$SSL_KEY" "$SSL_CRT"
 fi
+
+
+# Generate authentication keys and salts
+curl -s https://api.wordpress.org/secret-key/1.1/salt/ > "$DIR/secrets/wp_salts.txt"
+

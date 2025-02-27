@@ -3,6 +3,8 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
+    # extra_hosts:
+    #   - ${DOMAIN}=${WP_SITE_URL}
     secrets:
       - nginx_ssl_key
       - nginx_ssl_cert
@@ -25,6 +27,7 @@ services:
       - db_user
       - wp_admin_password
       - wp_user_jack_password
+      - wp_salts
     environment:
       # Database Configuration
       - WORDPRESS_DB_HOST=${WP_DB_HOST}
@@ -94,3 +97,5 @@ secrets:
     file: ../secrets/wp_admin_password.txt
   wp_user_jack_password:
     file: ../secrets/wp_user_jack_password.txt
+  wp_salts:
+    file: ../secrets/wp_salts.txt
