@@ -1,16 +1,13 @@
 SRC_DIR=srcs
 DOCKER_COMPOSE=docker-compose -f $(SRC_DIR)/docker-compose.yml
-SSL_DIR=$(SRC_DIR)/requirements/nginx/ssl
-SSL_KEY=$(SSL_DIR)/nginx.key
-SSL_CRT=$(SSL_DIR)/nginx.crt
 
-up: generate-ssl
+up: generate_secrets 
 	$(DOCKER_COMPOSE) up -d
 
 down:
 	$(DOCKER_COMPOSE) down
 
-build: generate-ssl
+build: generate_secrets
 	$(DOCKER_COMPOSE) build
 
 logs:
@@ -23,23 +20,17 @@ restart: down up
 
 fclean: clean
 	docker system prune -a --volumes
+	# docker secret ls -q | xargs docker secret rm
 
 re: fclean up
 
 ps:
 	docker ps
 
-generate-ssl:
-	@if [ ! -f $(SSL_KEY) ] || [ ! -f $(SSL_CRT) ]; then \
-		echo "Generating SSL certificates..."; \
-		mkdir -p $(SSL_DIR); \
-		openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-			-keyout $(SSL_KEY) \
-			-out $(SSL_CRT) \
-			-subj "/C=MA/ST=State/L=City/O=Org/CN=localhost"; \
-	else \
-		echo "SSL certificates already exist."; \
-	fi
+update:
+	./srcs/requirements/tools/update.sh
 
+generate_secrets:
+	./srcs/requirements/tools/generate_secrets.sh
 
-.PHONY: up build down clean logs restart fclean re ps generate-ssl
+.PHONY: up build down clean logs restart fclean re ps generate_secrets

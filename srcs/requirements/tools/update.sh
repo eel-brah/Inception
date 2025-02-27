@@ -2,6 +2,16 @@
 
 # Update all Dockerfile to use the penultimate stable version of alpine
 
+read -p "Do you want to update all Dockerfile to use the penultimate stable version of alpine? (y/n): " answer
+if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+    echo "Updating all Dockerfile to use the penultimate stable version of alpine..."
+else
+    echo "The update was refused"
+    exit 1
+fi
+
+DIR="./srcs/requirements"
+
 # Fetch the latest stable version of Alpine Linux
 LATEST_VERSION=$(curl -s https://alpinelinux.org/releases/ | grep -oP 'v\d+\.\d+' | head -n 1)
 
@@ -14,7 +24,7 @@ PENULTIMATE_VERSION="${MAJOR_VERSION}.$((MINOR_VERSION - 1))"
 echo "Penultimate stable version: $PENULTIMATE_VERSION"
 
 # Find all Dockerfiles in the current directory and subdirectories
-DOCKERFILES=$(find . -type f -name "Dockerfile")
+DOCKERFILES=$(find $DIR -type f -name "Dockerfile")
 
 # Update the Alpine version
 for DOCKERFILE in $DOCKERFILES; do

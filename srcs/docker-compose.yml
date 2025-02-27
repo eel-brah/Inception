@@ -3,8 +3,11 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
+    secrets:
+      - nginx_ssl_key
+      - nginx_ssl_cert
     ports:
-      - "4443:443"
+      - "${NGINX_PORT}:443"
     volumes:
       - wordpress_files:/var/www/html
     depends_on:
@@ -52,3 +55,10 @@ volumes:
 networks:
   wordpress_network:
     driver: bridge
+
+
+secrets:
+  nginx_ssl_key:
+    file: ../secrets/ssl/nginx.key
+  nginx_ssl_cert:
+    file: ../secrets/ssl/nginx.crt

@@ -2,7 +2,6 @@ FROM alpine:3.20
 
 RUN apk add --no-cache nginx
 
-COPY ssl /etc/nginx/ssl
 COPY conf /etc/nginx/
 
 EXPOSE 443
