@@ -20,11 +20,30 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
+    secrets:
+      - db_user_password
+      - db_user
+      - wp_admin_password
+      - wp_user_jack_password
     environment:
-      - WORDPRESS_DB_HOST=mariadb
-      - WORDPRESS_DB_USER=wordpress_user
-      - WORDPRESS_DB_PASSWORD=secure_password
-      - WORDPRESS_DB_NAME=wordpress_db
+      # Database Configuration
+      - WORDPRESS_DB_HOST=${WP_DB_HOST}
+      - WORDPRESS_DB_USER_FILE=/run/secrets/db_user
+      - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/db_user_password
+      - WORDPRESS_DB_NAME=${MD_DATABASE}
+      # Site Configuration
+      - WORDPRESS_SITE_URL=${WP_SITE_URL}
+      - WORDPRESS_SITE_TITLE=${WP_SITE_TITLE}
+      - WORDPRESS_SITE_HOST=${WP_SITE_HOST}
+      # Admin Configuration
+      - WORDPRESS_ADMIN_USER=${WP_ADMIN_USER}
+      - WORDPRESS_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+      - WORDPRESS_ADMIN_PASSWORD_FILE=/run/secrets/wp_admin_password
+      # User Configuration
+      - WP_USER1_EMAIL=${WP_USER1_EMAIL}
+      - WP_USER1_NAME=${WP_USER1_NAME}
+      - WP_USER1_ROLE=${WP_USER1_ROLE}
+      - WP_USER1_PASSWORD_FILE=/run/secrets/wp_user_jack_password
     volumes:
       - wordpress_files:/var/www/html
     depends_on:
@@ -37,11 +56,15 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
+    secrets:
+      - db_root_password
+      - db_user_password
+      - db_user
     environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=wordpress_db
-      - MYSQL_USER=wordpress_user
-      - MYSQL_PASSWORD=secure_password
+      - MD_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - MD_WP_PASSWORD_FILE=/run/secrets/db_user_password
+      - MD_WP_USER_FILE=/run/secrets/db_user
+      - MD_DATABASE=${MD_DATABASE}
     volumes:
        - wordpress_db:/var/lib/mysql
     networks:
@@ -56,9 +79,18 @@ networks:
   wordpress_network:
     driver: bridge
 
-
 secrets:
   nginx_ssl_key:
     file: ../secrets/ssl/nginx.key
   nginx_ssl_cert:
     file: ../secrets/ssl/nginx.crt
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+  db_user_password:
+    file: ../secrets/db_user_password.txt
+  db_user:
+    file: ../secrets/db_user.txt
+  wp_admin_password:
+    file: ../secrets/wp_admin_password.txt
+  wp_user_jack_password:
+    file: ../secrets/wp_user_jack_password.txt

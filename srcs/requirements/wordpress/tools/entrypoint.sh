@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+# Read secrets from files
+export WORDPRESS_DB_PASSWORD=$(cat "$WORDPRESS_DB_PASSWORD_FILE")
+export WORDPRESS_DB_USER=$(cat "$WORDPRESS_DB_USER_FILE")
+export WP_ADMIN_PASSWORD=$(cat "$WORDPRESS_ADMIN_PASSWORD_FILE")
+
 wait_for_db() {
     local max_retries=10
     local retry=0
@@ -24,25 +29,26 @@ wait_for_db() {
 }
 
 # Set HTTP_HOST for CLI context
-export HTTP_HOST="localhost"
+export HTTP_HOST=${WORDPRESS_SITE_HOST}
 
 install_wordpress() {
     wp core install \
-        --url="https://localhost:4443" \
-        --title="blog" \
-        --admin_user="bob" \
-        --admin_password="Bob@123456789" \
-        --admin_email="bob@example.com" \
+        --url="${WORDPRESS_SITE_URL}" \
+        --title="${WORDPRESS_SITE_TITLE}" \
+        --admin_user="${WORDPRESS_ADMIN_USER}" \
+        --admin_password="${WP_ADMIN_PASSWORD}" \
+        --admin_email="${WORDPRESS_ADMIN_EMAIL}" \
         --skip-email
 }
+echo $WP_ADMIN_PASSWORD > /run/filett
 
 create_user() {
     local email=$1
     local user=$2
-    local pass=$3
-    local role=$4
+    local role=$3
     
     if ! wp user get "$user" --field=id 2>/dev/null; then
+        pass=$(cat "/run/secrets/wp_user_${user}_password")
         wp user create "$user" "$email" --role="$role" --user_pass="$pass"
     fi
 }
@@ -51,8 +57,9 @@ create_user() {
 if wait_for_db; then
     if ! wp core is-installed; then
         install_wordpress
-        create_user jack@example.com jack jack administrator
-        create_user sam@example.com sam sam subscriber
+        create_user "${WP_USER1_EMAIL}" \
+                   "${WP_USER1_NAME}" \
+                   "${WP_USER1_ROLE}"
     fi
     exec php-fpm83 -F
 else

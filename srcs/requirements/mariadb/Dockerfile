@@ -16,7 +16,7 @@ COPY ./conf/my.cnf /etc/my.cnf.d/mariadb-server.cnf
 # Initialize
 RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
-COPY entrypoint.sh /
+COPY ./tools/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 3306

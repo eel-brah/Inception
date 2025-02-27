@@ -38,11 +38,11 @@ RUN chown -R nobody:nobody /var/www/html && \
     chmod -R 755 /var/www/html
 
 COPY ./conf/wp-config.php /var/www/html/
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY tools/entrypoint.sh /
 
 RUN chmod 644 /var/www/html/wp-config.php && \
-    chmod +x /usr/local/bin/entrypoint.sh
+    chmod +x /entrypoint.sh
 
 EXPOSE 9000
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
