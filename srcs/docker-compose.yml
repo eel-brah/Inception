@@ -3,6 +3,7 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
+    image: alpine_nginx:1.2
     # extra_hosts:
     #   - ${DOMAIN}=${WP_SITE_URL}
     secrets:
@@ -22,6 +23,7 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
+    image: alpine_wordpress:1.2
     secrets:
       - db_user_password
       - db_user
@@ -59,6 +61,7 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
+    image: alpine_mariadb:1.2
     secrets:
       - db_root_password
       - db_user_password
