@@ -29,19 +29,16 @@ COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
 # Download the latest WordPress release
 WORKDIR /var/www/html
 RUN curl -O https://wordpress.org/latest.tar.gz && \
-    tar -xzf latest.tar.gz && \
-    mv wordpress/* . && \
-    rm -rf wordpress latest.tar.gz
-
-# Set proper ownership and permissions for the WordPress files
-RUN chown -R nobody:nobody /var/www/html && \
-    chmod -R 755 /var/www/html
+    tar -xzf latest.tar.gz --strip-components=1 && \
+    rm latest.tar.gz
 
 COPY ./conf/wp-config.php /var/www/html/
 COPY tools/entrypoint.sh /
 
+# Set proper ownership and permissions 
 RUN chmod 644 /var/www/html/wp-config.php && \
-    chmod +x /entrypoint.sh
+    chmod +x /entrypoint.sh && \
+    chown -R nobody:nobody /var/www/html
 
 EXPOSE 9000
 

@@ -21,6 +21,10 @@ if (file_exists($salt_file)) {
     }
 }
 
+if (!isset($_SERVER['HTTP_HOST'])) {
+    $_SERVER['HTTP_HOST'] = getenv('WORDPRESS_SITE_HOST') ?: 'localhost';
+}
+
 $table_prefix = 'wp_';
 
 define( 'WP_DEBUG', true );

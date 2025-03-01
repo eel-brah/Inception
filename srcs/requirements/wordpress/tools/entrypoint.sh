@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 
-# Read secrets from files
 export WORDPRESS_DB_PASSWORD=$(cat "$WORDPRESS_DB_PASSWORD_FILE")
 export WORDPRESS_DB_USER=$(cat "$WORDPRESS_DB_USER_FILE")
 export WP_ADMIN_PASSWORD=$(cat "$WORDPRESS_ADMIN_PASSWORD_FILE")
@@ -25,11 +24,8 @@ wait_for_db() {
         retry=$((retry+1))
     done
     
-    [ $retry -lt $max_retries ] || return 1
+    [ $retry -lt $max_retries ] || { echo "Database connection failed"; exit 1; }
 }
-
-# Set HTTP_HOST for CLI context
-export HTTP_HOST=${WORDPRESS_SITE_HOST}
 
 install_wordpress() {
     wp core install \
@@ -40,7 +36,6 @@ install_wordpress() {
         --admin_email="${WORDPRESS_ADMIN_EMAIL}" \
         --skip-email
 }
-echo $WP_ADMIN_PASSWORD > /run/filett
 
 create_user() {
     local email=$1
@@ -53,13 +48,10 @@ create_user() {
     fi
 }
 
-# Main execution
 if wait_for_db; then
     if ! wp core is-installed; then
         install_wordpress
-        create_user "${WP_USER1_EMAIL}" \
-                   "${WP_USER1_NAME}" \
-                   "${WP_USER1_ROLE}"
+        create_user "${WP_USER1_EMAIL}" "${WP_USER1_NAME}" "${WP_USER1_ROLE}"
     fi
     exec php-fpm83 -F
 else
