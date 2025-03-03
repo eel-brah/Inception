@@ -2,3 +2,4 @@ todo
 nginx_test
 time
 secrets/*
+#srcs/.env
