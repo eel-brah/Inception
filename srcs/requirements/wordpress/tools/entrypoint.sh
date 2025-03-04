@@ -53,6 +53,10 @@ if wait_for_db; then
         install_wordpress
         create_user "${WP_USER1_EMAIL}" "${WP_USER1_NAME}" "${WP_USER1_ROLE}"
     fi
+    
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
+
     exec php-fpm83 -F
 else
     echo "Failed to connect to database after multiple attempts"

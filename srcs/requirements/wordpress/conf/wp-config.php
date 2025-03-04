@@ -11,6 +11,11 @@ define('DB_HOST', 'mariadb');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
+define('WP_REDIS_HOST', 'redis');
+define('WP_REDIS_PORT', 6379);
+define('WP_REDIS_DATABASE', 0);
+define('WP_CACHE', true);
+
 // Load WordPress salts from the generated file
 $salt_file = '/run/secrets/wp_salts';
 if (file_exists($salt_file)) {

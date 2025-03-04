@@ -3,7 +3,7 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
-    image: nginx:1.2
+    image: nginx:alpine
     container_name: nginx
     secrets:
       - nginx_ssl_key
@@ -22,7 +22,7 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
-    image: wordpress:1.2
+    image: wordpress:alpine
     container_name: wordpress
     secrets:
       - db_user_password
@@ -49,10 +49,14 @@ services:
       - WP_USER1_NAME=${WP_USER1_NAME}
       - WP_USER1_ROLE=${WP_USER1_ROLE}
       - WP_USER1_PASSWORD_FILE=/run/secrets/wp_user_jack_password
+      # Redis
+      - WORDPRESS_REDIS_HOST=redis
+      - WORDPRESS_REDIS_PORT=6379
     volumes:
       - wordpress_files:/var/www/html
     depends_on:
       - mariadb
+      - redis
     networks:
       - wordpress_network
     restart: unless-stopped
@@ -61,7 +65,7 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    image: mariadb:1.2
+    image: mariadb:alpine
     container_name: mariadb
     secrets:
       - db_root_password
@@ -77,6 +81,18 @@ services:
     networks:
       - wordpress_network
     restart: unless-stopped
+      
+  redis:
+    build:
+      context: ./requirements/bonus/redis
+      dockerfile: Dockerfile
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    networks:
+      - wordpress_network
+    expose:
+      - "6379"
 
 volumes:
   wordpress_files:

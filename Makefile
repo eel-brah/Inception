@@ -5,6 +5,8 @@ all: build up
 
 build: 
 	@$(DOCKER_COMPOSE) build
+	@mkdir -p /home/$(USER)/data/wordpress_files
+	@mkdir -p /home/$(USER)/data/wordpress_db
 
 up: generate_secrets 
 	@$(DOCKER_COMPOSE) up -d 
@@ -24,6 +26,8 @@ logs-service:
 fclean: clean
 	@$(DOCKER_COMPOSE) down --rmi all
 	@rm -rf ./secrets/*
+	@rm -rf /home/$(USER)/data/wordpress_files/*
+	@rm -rf /home/$(USER)/data/wordpress_db/*
 
 shell:
 	@$(DOCKER_COMPOSE) exec $(service) sh
