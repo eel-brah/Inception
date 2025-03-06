@@ -141,6 +141,23 @@ services:
     networks:
       - wordpress_network
 
+  cadvisor:
+    build:
+      context: ./requirements/bonus/cadvisor
+      dockerfile: Dockerfile
+    image: cadvisor:alpine
+    container_name: cadvisor
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "8081:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - wordpress_network
+
 volumes:
   wordpress_files:
     driver: local
