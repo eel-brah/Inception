@@ -94,6 +94,53 @@ services:
     expose:
       - "6379"
 
+  ftp-server:
+    build:
+      context: ./requirements/bonus/ftp
+      dockerfile: Dockerfile
+    image: ftp-server:alpine
+    container_name: ftp_server
+    restart: unless-stopped
+    environment:
+      - FTP_USER=${FTP_USER}
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"  # Passive mode ports
+    volumes:
+      - wordpress_files:/data/wordpress_files  # Bind WordPress files to FTP user home
+    secrets:
+      - ftp_password
+    networks:
+      - wordpress_network
+
+  website:
+    build:
+      context: ./requirements/bonus/website
+      dockerfile: Dockerfile
+    image: website:alpine
+    container_name: website
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - website_files:/app
+    networks:
+      - wordpress_network
+
+  adminer:
+    build:
+      context: ./requirements/bonus/adminer
+      dockerfile: Dockerfile
+    image: adminer:alpine
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    networks:
+      - wordpress_network
+
 volumes:
   wordpress_files:
     driver: local
@@ -107,6 +154,12 @@ volumes:
       type: none
       o: bind
       device: "/home/${USER}/data/wordpress_db"
+  website_files:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "/home/${USER}/data/website_files"
 
 networks:
   wordpress_network:
@@ -129,3 +182,5 @@ secrets:
     file: ../secrets/wp_user_jack_password.txt
   wp_salts:
     file: ../secrets/wp_salts.txt
+  ftp_password:
+    file: ../secrets/ftp_password.txt

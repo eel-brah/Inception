@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Skills</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #95a5a6;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .profile-title {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        nav {
+            background-color: #34495e;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #465c73;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .skill-category {
+            flex: 1 1 45%;
+            min-width: 250px;
+        }
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        .skill-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .skill-level {
+            height: 100%;
+            border-radius: 5px;
+        }
+        .expert {
+            width: 95%;
+            background-color: #27ae60;
+        }
+        .advanced {
+            width: 85%;
+            background-color: #2ecc71;
+        }
+        .intermediate {
+            width: 70%;
+            background-color: #f1c40f;
+        }
+        .beginner {
+            width: 50%;
+            background-color: #e67e22;
+        }
+        .languages {
+            margin-top: 2rem;
+        }
+        .language {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .language-name {
+            min-width: 120px;
+            font-weight: bold;
+        }
+        .language-level {
+            color: #7f8c8d;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <div class="profile-pic">JD</div>
+            <h1>John Doe</h1>
+            <p class="profile-title">Senior Software Engineer</p>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">About</a></li>
+            <li><a href="/experience">Experience</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/skills">Skills</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Technical Skills</h2>
+        
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Python</div>
+                    <div class="skill-bar">
+                        <div class="skill-level expert"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Java</div>
+                    <div class="skill-bar">
+                        <div class="skill-level intermediate"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">TypeScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-level intermediate"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">C++</div>
+                    <div class="skill-bar">
+                        <div class="skill-level beginner"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Frameworks & Libraries</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Django/Flask</div>
+                    <div class="skill-bar">
+                        <div class="skill-level expert"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">React</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Node.js</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">TensorFlow/PyTorch</div>
+                    <div class="skill-bar">
+                        <div class="skill-level intermediate"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Vue.js</div>
+                    <div class="skill-bar">
+                        <div class="skill-level beginner"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>DevOps & Cloud</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Docker/Kubernetes</div>
+                    <div class="skill-bar">
+                        <div class="skill-level expert"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">AWS</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">CI/CD Pipelines</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Google Cloud</div>
+                    <div class="skill-bar">
+                        <div class="skill-level intermediate"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Terraform</div>
+                    <div class="skill-bar">
+                        <div class="skill-level intermediate"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Databases</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">PostgreSQL</div>
+                    <div class="skill-bar">
+                        <div class="skill-level expert"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">MongoDB</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Redis</div>
+                    <div class="skill-bar">
+                        <div class="skill-level advanced"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">MySQL</div>
+                    <div class="skill-bar">
+                        <div class="skill-level intermediate"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Elasticsearch</div>
+                    <div class="skill-bar">
+                        <div class="skill-level beginner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Soft Skills</h2>
+        <ul>
+            <li>Team Leadership</li>
+            <li>Project Management</li>
+            <li>Agile Development</li>
+            <li>Technical Documentation</li>
+            <li>Problem Solving</li>
+            <li>Communication</li>
+            <li>Time Management</li>
+            <li>Mentoring</li>
+        </ul>
+        
+        <h2>Languages</h2>
+        <div class="languages">
+            <div class="language">
+                <div class="language-name">English</div>
+                <div class="language-level">Native</div>
+            </div>
+            <div class="language">
+                <div class="language-name">Spanish</div>
+                <div class="language-level">Professional Proficiency</div>
+            </div>
+            <div class="language">
+                <div class="language-name">German</div>
+                <div class="language-level">Basic Knowledge</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 John Doe | Software Engineer</p>
+    </footer>
+</body>
+</html>

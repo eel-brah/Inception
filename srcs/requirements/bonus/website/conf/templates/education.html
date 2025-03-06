@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Education</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #95a5a6;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .profile-title {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        nav {
+            background-color: #34495e;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #465c73;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+        .education {
+            margin-bottom: 2rem;
+            border-left: 3px solid #9b59b6;
+            padding-left: 1.5rem;
+        }
+        .degree {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        .school {
+            font-weight: bold;
+            color: #9b59b6;
+        }
+        .date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .certificate {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid #e74c3c;
+        }
+        .cert-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .cert-provider {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .cert-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <div class="profile-pic">JD</div>
+            <h1>John Doe</h1>
+            <p class="profile-title">Senior Software Engineer</p>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">About</a></li>
+            <li><a href="/experience">Experience</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/skills">Skills</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Education</h2>
+        
+        <div class="education">
+            <div class="degree">Master of Science in Computer Science</div>
+            <div class="school">Stanford University</div>
+            <div class="date">2015 - 2017</div>
+            <p>Specialized in Artificial Intelligence and Machine Learning. Thesis focused on optimizing neural networks for natural language processing applications.</p>
+            <p>GPA: 3.8/4.0</p>
+        </div>
+        
+        <div class="education">
+            <div class="degree">Bachelor of Science in Computer Engineering</div>
+            <div class="school">Massachusetts Institute of Technology</div>
+            <div class="date">2011 - 2015</div>
+            <p>Courses included Data Structures, Algorithms, Database Systems, Operating Systems, and Computer Networks.</p>
+            <p>GPA: 3.7/4.0</p>
+        </div>
+        
+        <h2>Certifications</h2>
+        
+        <div class="certificate">
+            <div class="cert-name">AWS Certified Solutions Architect - Professional</div>
+            <div class="cert-provider">Amazon Web Services</div>
+            <div class="cert-date">Issued: October 2023 • Expires: October 2026</div>
+        </div>
+        
+        <div class="certificate">
+            <div class="cert-name">Certified Kubernetes Administrator (CKA)</div>
+            <div class="cert-provider">Cloud Native Computing Foundation</div>
+            <div class="cert-date">Issued: May 2022 • Expires: May 2025</div>
+        </div>
+        
+        <div class="certificate">
+            <div class="cert-name">Professional Scrum Master I (PSM I)</div>
+            <div class="cert-provider">Scrum.org</div>
+            <div class="cert-date">Issued: January 2020 • No Expiration</div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 John Doe | Software Engineer</p>
+    </footer>
+</body>
+</html>

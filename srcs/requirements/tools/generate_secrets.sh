@@ -13,6 +13,7 @@ mkdir -p "$SSL_DIR"
 [ ! -f "$DIR/secrets/db_user.txt" ] && echo wordpress_user > "$DIR/secrets/db_user.txt"
 [ ! -f "$DIR/secrets/wp_admin_password.txt" ] && openssl rand -base64 32 > "$DIR/secrets/wp_admin_password.txt"
 [ ! -f "$DIR/secrets/wp_user_jack_password.txt" ] && openssl rand -base64 32 > "$DIR/secrets/wp_user_jack_password.txt"
+[ ! -f "$DIR/secrets/ftp_password.txt" ] && openssl rand -base64 32 > "$DIR/secrets/ftp_password.txt"
 
 if [ ! -f "$SSL_KEY" ] || [ ! -f "$SSL_CRT" ]; then
     echo "Generating SSL certificates..."

@@ -7,6 +7,7 @@ build:
 	@$(DOCKER_COMPOSE) build
 	@mkdir -p /home/$(USER)/data/wordpress_files
 	@mkdir -p /home/$(USER)/data/wordpress_db
+	@mkdir -p /home/$(USER)/data/website_files
 
 up: generate_secrets 
 	@$(DOCKER_COMPOSE) up -d 
@@ -31,6 +32,8 @@ fclean: clean
 
 shell:
 	@$(DOCKER_COMPOSE) exec $(service) sh
+
+restart: down build up
 
 re: fclean build up
 
