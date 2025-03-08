@@ -6,12 +6,10 @@ RUN apk add --no-cache \
     php83-json \
     php83-openssl \
     php83-curl \
-    php83-zlib \
     php83-xml \
     php83-phar \
     php83-intl \
     php83-dom \
-    php83-xmlreader \
     php83-ctype \
     php83-session \
     php83-mbstring \

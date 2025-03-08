@@ -7,11 +7,9 @@ RUN apk add --no-cache \
     php83-pdo_mysql \
     curl
 
-RUN mkdir -p /var/www/html && \
-    curl -L -o /var/www/html/adminer.php https://www.adminer.org/latest.php
-
-WORKDIR /var/www/html
+RUN mkdir -p /var/www/adminer && \
+    curl -L -o /var/www/adminer/adminer.php https://www.adminer.org/latest.php
 
 EXPOSE 8080
 
-ENTRYPOINT ["php83", "-S", "0.0.0.0:8080", "/var/www/html/adminer.php"]
+ENTRYPOINT ["php83", "-S", "0.0.0.0:8080", "/var/www/adminer/adminer.php"]

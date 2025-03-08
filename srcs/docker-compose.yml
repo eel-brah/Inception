@@ -9,13 +9,13 @@ services:
       - nginx_ssl_key
       - nginx_ssl_cert
     ports:
-      - "${NGINX_PORT}:443"
+      - "443:443"
     volumes:
       - wordpress_files:/var/www/html
     depends_on:
       - wordpress
     networks:
-      - wordpress_network
+      - inception_network
     restart: unless-stopped
 
   wordpress:
@@ -31,25 +31,24 @@ services:
       - wp_user_jack_password
       - wp_salts
     environment:
-      # Database Configuration
       - WORDPRESS_DB_HOST=${WP_DB_HOST}
       - WORDPRESS_DB_USER_FILE=/run/secrets/db_user
       - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/db_user_password
       - WORDPRESS_DB_NAME=${MD_DATABASE}
-      # Site Configuration
+  
       - WORDPRESS_SITE_URL=${WP_SITE_URL}
       - WORDPRESS_SITE_TITLE=${WP_SITE_TITLE}
       - WORDPRESS_SITE_HOST=${WP_SITE_HOST}
-      # Admin Configuration
+ 
       - WORDPRESS_ADMIN_USER=${WP_ADMIN_USER}
       - WORDPRESS_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
       - WORDPRESS_ADMIN_PASSWORD_FILE=/run/secrets/wp_admin_password
-      # User Configuration
+
       - WP_USER1_EMAIL=${WP_USER1_EMAIL}
       - WP_USER1_NAME=${WP_USER1_NAME}
       - WP_USER1_ROLE=${WP_USER1_ROLE}
       - WP_USER1_PASSWORD_FILE=/run/secrets/wp_user_jack_password
-      # Redis
+
       - WORDPRESS_REDIS_HOST=redis
       - WORDPRESS_REDIS_PORT=6379
     volumes:
@@ -58,7 +57,7 @@ services:
       - mariadb
       - redis
     networks:
-      - wordpress_network
+      - inception_network
     restart: unless-stopped
 
   mariadb:
@@ -79,7 +78,7 @@ services:
     volumes:
        - wordpress_db:/var/lib/mysql
     networks:
-      - wordpress_network
+      - inception_network
     restart: unless-stopped
       
   redis:
@@ -90,7 +89,7 @@ services:
     container_name: redis
     restart: unless-stopped
     networks:
-      - wordpress_network
+      - inception_network
     expose:
       - "6379"
 
@@ -101,17 +100,17 @@ services:
     image: ftp-server:alpine
     container_name: ftp_server
     restart: unless-stopped
+    secrets:
+      - ftp_password
     environment:
       - FTP_USER=${FTP_USER}
     ports:
       - "21:21"
-      - "21100-21110:21100-21110"  # Passive mode ports
+      - "21100-21110:21100-21110"  
     volumes:
-      - wordpress_files:/data/wordpress_files  # Bind WordPress files to FTP user home
-    secrets:
-      - ftp_password
+      - wordpress_files:/home/${FTP_USER}/wordpress_files  
     networks:
-      - wordpress_network
+      - inception_network
 
   website:
     build:
@@ -125,7 +124,7 @@ services:
     volumes:
       - website_files:/app
     networks:
-      - wordpress_network
+      - inception_network
 
   adminer:
     build:
@@ -134,12 +133,12 @@ services:
     image: adminer:alpine
     container_name: adminer
     restart: unless-stopped
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8080:8080"
     depends_on:
       - mariadb
     networks:
-      - wordpress_network
+      - inception_network
 
   cadvisor:
     build:
@@ -148,15 +147,14 @@ services:
     image: cadvisor:alpine
     container_name: cadvisor
     restart: unless-stopped
-    privileged: true
     ports:
-      - "8081:8080"
+      - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     networks:
-      - wordpress_network
+      - inception_network
 
 volumes:
   wordpress_files:
@@ -179,7 +177,7 @@ volumes:
       device: "/home/${USER}/data/website_files"
 
 networks:
-  wordpress_network:
+  inception_network:
     driver: bridge
 
 secrets:
