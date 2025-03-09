@@ -19,7 +19,10 @@ logs:
 	@$(DOCKER_COMPOSE) logs -f
 
 clean:
-	@$(DOCKER_COMPOSE) down -v --remove-orphans
+	@$(DOCKER_COMPOSE) down -v
+	@sudo rm -rf /home/$(USER)/data/wordpress_files
+	@sudo rm -rf /home/$(USER)/data/wordpress_db
+	@sudo rm -rf /home/$(USER)/data/website_files
 
 logs-service:
 	@$(DOCKER_COMPOSE) logs -f $(service)
@@ -27,9 +30,6 @@ logs-service:
 fclean: clean
 	@$(DOCKER_COMPOSE) down --rmi all
 	@rm -rf ./secrets/*
-	@sudo rm -rf /home/$(USER)/data/wordpress_files
-	@sudo rm -rf /home/$(USER)/data/wordpress_db
-	@sudo rm -rf /home/$(USER)/data/website_files
 
 shell:
 	@$(DOCKER_COMPOSE) exec $(service) sh
