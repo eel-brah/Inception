@@ -36,7 +36,8 @@ COPY tools/entrypoint.sh /
 # Set proper ownership and permissions 
 RUN chmod 644 /var/www/html/wp-config.php && \
     chmod +x /entrypoint.sh && \
-    chown -R nobody:nobody /var/www/html
+    chown -R nobody:nobody /var/www/html && \
+    chmod -R 775 /var/www/html
 
 EXPOSE 9000
 

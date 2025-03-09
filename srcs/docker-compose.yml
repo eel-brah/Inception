@@ -8,12 +8,16 @@ services:
     secrets:
       - nginx_ssl_key
       - nginx_ssl_cert
+    environment:
+      - DOMAIN=${DOMAIN}
+      - DOMAIN2=${DOMAIN2}
     ports:
       - "443:443"
     volumes:
       - wordpress_files:/var/www/html
     depends_on:
       - wordpress
+      - adminer 
     networks:
       - inception_network
     restart: unless-stopped
@@ -48,9 +52,6 @@ services:
       - WP_USER1_NAME=${WP_USER1_NAME}
       - WP_USER1_ROLE=${WP_USER1_ROLE}
       - WP_USER1_PASSWORD_FILE=/run/secrets/wp_user_jack_password
-
-      - WORDPRESS_REDIS_HOST=redis
-      - WORDPRESS_REDIS_PORT=6379
     volumes:
       - wordpress_files:/var/www/html
     depends_on:
@@ -90,8 +91,6 @@ services:
     restart: unless-stopped
     networks:
       - inception_network
-    expose:
-      - "6379"
 
   ftp-server:
     build:
@@ -119,8 +118,8 @@ services:
     image: website:alpine
     container_name: website
     restart: unless-stopped
-    ports:
-      - "5000:5000"
+    # ports:
+    #   - "5000:5000"
     volumes:
       - website_files:/app
     networks:
