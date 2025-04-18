@@ -33,7 +33,7 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 
 $table_prefix = 'wp_';
 
-define( 'WP_DEBUG', true );
+define( 'WP_DEBUG', false );
 
 if ( ! defined( 'ABSPATH' ) ) {
     define( 'ABSPATH', __DIR__ . '/' );
