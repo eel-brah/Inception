@@ -1,137 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Professional Resume</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #95a5a6;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .profile-title {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        nav {
-            background-color: #34495e;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav li {
-            margin: 0;
-            padding: 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            display: block;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #465c73;
-        }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 5px;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.5rem;
-        }
-        .social-links {
-            margin-top: 2rem;
-            text-align: center;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: #2c3e50;
-            text-decoration: none;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="profile-container">
-            <div class="profile-pic">JD</div>
-            <h1>John Doe</h1>
-            <p class="profile-title">Senior Software Engineer</p>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">About</a></li>
-            <li><a href="/experience">Experience</a></li>
-            <li><a href="/education">Education</a></li>
-            <li><a href="/skills">Skills</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h2>About Me</h2>
-        <p>Hello! I'm John Doe, a passionate senior software engineer with over 8 years of experience in developing scalable applications and leading development teams. I specialize in full-stack development with expertise in Python, JavaScript, and cloud technologies.</p>
-        
-        <p>Throughout my career, I've had the opportunity to work on diverse projects across various industries, from e-commerce platforms to fintech solutions. I'm particularly interested in creating efficient, maintainable code that solves real-world problems.</p>
-        
-        <p>When I'm not coding, you can find me hiking in the mountains, reading tech blogs, or experimenting with new programming languages. I'm always eager to learn new technologies and methodologies to enhance my skill set.</p>
-        
-        <div class="social-links">
-            <a href="#">LinkedIn</a> |
-            <a href="#">GitHub</a> |
-            <a href="#">Twitter</a>
+<!-- index.html -->
+{% extends "base.html" %}
+{% block title %}John Doe | Professional Resume{% endblock %}
+{% block home_active %}active{% endblock %}
+
+{% block content %}
+<section class="flex flex-col md:flex-row items-center mb-16">
+    <div class="md:w-1/2 md:pr-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-blue-600">John Doe</h1>
+        <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Full Stack Developer</h2>
+        <p class="text-lg text-gray-700 mb-8">
+            I build exceptional digital experiences with clean, efficient code.
+            With over 7 years of experience in web development, I specialize in
+            creating scalable and maintainable solutions for complex problems.
+        </p>
+        <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                Contact Me
+            </a>
+            <a href="/experience" class="border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-md transition duration-300">
+                View Experience
+            </a>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 John Doe | Software Engineer</p>
-    </footer>
-</body>
-</html>
+    <div class="md:w-1/2 mt-8 md:mt-0">
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <img src="{{ url_for('static', filename='profile.avif') }}" alt="John Doe" class="rounded-lg w-full object-cover">
+        </div>
+    </div>
+</section>
+
+<section class="mb-16">
+    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">About Me</h2>
+    <p class="text-lg text-gray-700 mb-4">
+        I'm a passionate developer with expertise in modern web technologies. I love solving complex problems
+        and building intuitive user experiences. My approach combines technical excellence with a deep understanding
+        of user needs.
+    </p>
+    <p class="text-lg text-gray-700">
+        When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
+        or enjoying outdoor activities like hiking and photography.
+    </p>
+</section>
+
+<section class="mb-16">
+    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Key Skills</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Frontend Development</h3>
+            <p class="text-gray-700">
+                Expert in React, Vue.js, and modern CSS frameworks to create responsive and accessible user interfaces.
+            </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-server"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Backend Development</h3>
+            <p class="text-gray-700">
+                Proficient with Node.js, Python, and databases to build robust and scalable server applications.
+            </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Responsive Design</h3>
+            <p class="text-gray-700">
+                Creating seamless experiences across all devices through adaptive layouts and mobile-first approaches.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+            <img src="{{ url_for('static', filename='task.jpg') }}" alt="Project 1" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                <p class="text-gray-700 mb-4">
+                    A full-featured online store with product management, user authentication, and payment processing.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">React</span>
+                    <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Node.js</span>
+                    <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">MongoDB</span>
+                </div>
+                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Project →</a>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+            <img src="{{ url_for('static', filename='ecom.webp') }}" alt="Project 2" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                <p class="text-gray-700 mb-4">
+                    A collaborative task manager with real-time updates, task assignments, and progress tracking.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Vue.js</span>
+                    <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Flask</span>
+                    <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">PostgreSQL</span>
+                </div>
+                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Project →</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

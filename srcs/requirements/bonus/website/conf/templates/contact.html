@@ -1,283 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Contact</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #95a5a6;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .profile-title {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        nav {
-            background-color: #34495e;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav li {
-            margin: 0;
-            padding: 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            display: block;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #465c73;
-        }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 5px;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.5rem;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .contact-info h3 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #3498db;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 1rem;
-            color: #fff;
-            font-weight: bold;
-        }
-        .contact-details {
-            line-height: 1.4;
-        }
-        .contact-label {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        button {
-            background-color: #2c3e50;
-            color: #fff;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #3498db;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        .social-btn {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: #ecf0f1;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 0.5rem;
-            color: #2c3e50;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .social-btn:hover {
-            background-color: #3498db;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="profile-container">
-            <div class="profile-pic">JD</div>
-            <h1>John Doe</h1>
-            <p class="profile-title">Senior Software Engineer</p>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">About</a></li>
-            <li><a href="/experience">Experience</a></li>
-            <li><a href="/education">Education</a></li>
-            <li><a href="/skills">Skills</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h2>Get In Touch</h2>
-        
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">@</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Email</div>
-                        <div>john.doe@example.com</div>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">P</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Phone</div>
-                        <div>+1 (555) 123-4567</div>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">L</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Location</div>
-                        <div>San Francisco, CA</div>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">A</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Availability</div>
-                        <div>Full-time, Contract, Consulting</div>
-                    </div>
-                </div>
+{% extends "base.html" %}
+{% block title %}Contact | John Doe{% endblock %}
+{% block contact_active %}active{% endblock %}
+
+{% block content %}
+<section class="mb-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6 text-blue-600">Get In Touch</h1>
+    <p class="text-lg text-gray-700 mb-10">
+        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-envelope"></i>
             </div>
-            
-            <div class="contact-form">
-                <h3>Send Me a Message</h3>
-                
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
+            <h3 class="text-xl font-bold mb-2">Email</h3>
+            <p class="text-gray-700 mb-2">For any inquiries or questions:</p>
+            <a href="mailto:john.doe@example.com" class="text-blue-600 hover:text-blue-800">john.doe@example.com</a>
         </div>
         
-        <div class="social-links">
-            <a href="#" class="social-btn">LI</a>
-            <a href="#" class="social-btn">GH</a>
-            <a href="#" class="social-btn">TW</a>
-            <a href="#" class="social-btn">IG</a>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-phone"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Phone</h3>
+            <p class="text-gray-700 mb-2">Feel free to call during business hours:</p>
+            <a href="tel:+11234567890" class="text-blue-600 hover:text-blue-800">+1 (123) 456-7890</a>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Location</h3>
+            <p class="text-gray-700 mb-2">Based in:</p>
+            <p class="text-blue-600">San Francisco, CA</p>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 John Doe | Software Engineer</p>
-    </footer>
-</body>
-</html>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Send Me a Message</h2>
+            
+            <form action="#" method="POST" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Smith" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Project Inquiry" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or inquiry..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                
+                <div>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">Send Message</button>
+                </div>
+            </form>
+        </div>
+        
+        <div>
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Connect With Me</h2>
+            <p class="text-gray-700 mb-6">
+                Feel free to connect with me on any of these platforms. I'm always looking to expand my network and collaborate with like-minded professionals.
+            </p>
+            
+            <div class="space-y-4">
+                <a href="#" class="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 text-2xl mr-4"><i class="fab fa-linkedin"></i></div>
+                    <div>
+                        <h3 class="font-bold">LinkedIn</h3>
+                        <p class="text-gray-600">linkedin.com/in/johndoe</p>
+                    </div>
+                </a>
+                
+                <a href="#" class="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 text-2xl mr-4"><i class="fab fa-github"></i></div>
+                    <div>
+                        <h3 class="font-bold">GitHub</h3>
+                        <p class="text-gray-600">github.com/johndoe</p>
+                    </div>
+                </a>
+                
+                <a href="#" class="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 text-2xl mr-4"><i class="fab fa-twitter"></i></div>
+                    <div>
+                        <h3 class="font-bold">Twitter</h3>
+                        <p class="text-gray-600">@johndoedev</p>
+                    </div>
+                </a>
+                
+                <a href="#" class="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 text-2xl mr-4"><i class="fab fa-medium"></i></div>
+                    <div>
+                        <h3 class="font-bold">Medium</h3>
+                        <p class="text-gray-600">medium.com/@johndoe</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

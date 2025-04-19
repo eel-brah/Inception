@@ -1,365 +1,364 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Skills</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #95a5a6;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .profile-title {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        nav {
-            background-color: #34495e;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav li {
-            margin: 0;
-            padding: 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            display: block;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #465c73;
-        }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 5px;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.5rem;
-        }
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        .skill-category {
-            flex: 1 1 45%;
-            min-width: 250px;
-        }
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        .skill-item {
-            margin-bottom: 1rem;
-        }
-        .skill-name {
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        .skill-bar {
-            height: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .skill-level {
-            height: 100%;
-            border-radius: 5px;
-        }
-        .expert {
-            width: 95%;
-            background-color: #27ae60;
-        }
-        .advanced {
-            width: 85%;
-            background-color: #2ecc71;
-        }
-        .intermediate {
-            width: 70%;
-            background-color: #f1c40f;
-        }
-        .beginner {
-            width: 50%;
-            background-color: #e67e22;
-        }
-        .languages {
-            margin-top: 2rem;
-        }
-        .language {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .language-name {
-            min-width: 120px;
-            font-weight: bold;
-        }
-        .language-level {
-            color: #7f8c8d;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="profile-container">
-            <div class="profile-pic">JD</div>
-            <h1>John Doe</h1>
-            <p class="profile-title">Senior Software Engineer</p>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">About</a></li>
-            <li><a href="/experience">Experience</a></li>
-            <li><a href="/education">Education</a></li>
-            <li><a href="/skills">Skills</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h2>Technical Skills</h2>
-        
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>Programming Languages</h3>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Python</div>
-                    <div class="skill-bar">
-                        <div class="skill-level expert"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">JavaScript</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Java</div>
-                    <div class="skill-bar">
-                        <div class="skill-level intermediate"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">TypeScript</div>
-                    <div class="skill-bar">
-                        <div class="skill-level intermediate"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">C++</div>
-                    <div class="skill-bar">
-                        <div class="skill-level beginner"></div>
-                    </div>
-                </div>
-            </div>
+{% extends "base.html" %}
+{% block title %}Skills | John Doe{% endblock %}
+{% block skills_active %}active{% endblock %}
+
+{% block content %}
+<section class="mb-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6 text-blue-600">Technical Skills</h1>
+    <p class="text-lg text-gray-700 mb-10">
+        As a full stack developer, I've cultivated a diverse skill set spanning front-end design, back-end development,
+        and infrastructure management.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Frontend Development</h2>
             
-            <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Django/Flask</div>
-                    <div class="skill-bar">
-                        <div class="skill-level expert"></div>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">React & React Native</span>
+                        <span class="text-blue-600">Expert</span>
                     </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">5+ years of experience building complex applications</p>
                 </div>
                 
-                <div class="skill-item">
-                    <div class="skill-name">React</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Vue.js</span>
+                        <span class="text-blue-600">Advanced</span>
                     </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">3+ years of experience with Vue ecosystem</p>
                 </div>
                 
-                <div class="skill-item">
-                    <div class="skill-name">Node.js</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">HTML5/CSS3/SASS</span>
+                        <span class="text-blue-600">Expert</span>
                     </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">7+ years creating responsive, accessible interfaces</p>
                 </div>
                 
-                <div class="skill-item">
-                    <div class="skill-name">TensorFlow/PyTorch</div>
-                    <div class="skill-bar">
-                        <div class="skill-level intermediate"></div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">JavaScript/TypeScript</span>
+                        <span class="text-blue-600">Expert</span>
                     </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Vue.js</div>
-                    <div class="skill-bar">
-                        <div class="skill-level beginner"></div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="skill-category">
-                <h3>DevOps & Cloud</h3>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Docker/Kubernetes</div>
-                    <div class="skill-bar">
-                        <div class="skill-level expert"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">AWS</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">CI/CD Pipelines</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Google Cloud</div>
-                    <div class="skill-bar">
-                        <div class="skill-level intermediate"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Terraform</div>
-                    <div class="skill-bar">
-                        <div class="skill-level intermediate"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="skill-category">
-                <h3>Databases</h3>
-                
-                <div class="skill-item">
-                    <div class="skill-name">PostgreSQL</div>
-                    <div class="skill-bar">
-                        <div class="skill-level expert"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">MongoDB</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Redis</div>
-                    <div class="skill-bar">
-                        <div class="skill-level advanced"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">MySQL</div>
-                    <div class="skill-bar">
-                        <div class="skill-level intermediate"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-name">Elasticsearch</div>
-                    <div class="skill-bar">
-                        <div class="skill-level beginner"></div>
-                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Advanced knowledge of modern JS features and TS</p>
                 </div>
             </div>
         </div>
         
-        <h2>Soft Skills</h2>
-        <ul>
-            <li>Team Leadership</li>
-            <li>Project Management</li>
-            <li>Agile Development</li>
-            <li>Technical Documentation</li>
-            <li>Problem Solving</li>
-            <li>Communication</li>
-            <li>Time Management</li>
-            <li>Mentoring</li>
-        </ul>
-        
-        <h2>Languages</h2>
-        <div class="languages">
-            <div class="language">
-                <div class="language-name">English</div>
-                <div class="language-level">Native</div>
-            </div>
-            <div class="language">
-                <div class="language-name">Spanish</div>
-                <div class="language-level">Professional Proficiency</div>
-            </div>
-            <div class="language">
-                <div class="language-name">German</div>
-                <div class="language-level">Basic Knowledge</div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Backend Development</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Node.js</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Building RESTful APIs and microservices</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Python/Flask/Django</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Server-side development and data processing</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">SQL/NoSQL Databases</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">MongoDB, PostgreSQL, MySQL, Redis</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">GraphQL</span>
+                        <span class="text-blue-600">Intermediate</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Schema design and API implementation</p>
+                </div>
             </div>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 John Doe | Software Engineer</p>
-    </footer>
-</body>
-</html>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">DevOps & Infrastructure</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Docker & Kubernetes</span>
+                        <span class="text-blue-600">Intermediate</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Container orchestration and microservices</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">CI/CD Pipelines</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">GitHub Actions, Jenkins, GitLab CI</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Cloud Services</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">AWS, Google Cloud Platform, Azure</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Linux/Unix</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Shell scripting and system administration</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Tools & Methods</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Git & Version Control</span>
+                        <span class="text-blue-600">Expert</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Advanced branch management and collaboration</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Testing (Unit/E2E)</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Jest, Mocha, Cypress, Selenium</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">Agile Methodologies</span>
+                        <span class="text-blue-600">Advanced</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Scrum and Kanban implementation</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-medium text-gray-700">UI/UX Design</span>
+                        <span class="text-blue-600">Intermediate</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600">Figma, Adobe XD, user-centered design</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-blue-600">Languages & Frameworks</h2>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-wrap gap-3">
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">JavaScript</div>
+                    <div class="text-sm text-blue-600">Expert</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">TypeScript</div>
+                    <div class="text-sm text-blue-600">Expert</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Python</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">PHP</div>
+                    <div class="text-sm text-blue-600">Intermediate</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Java</div>
+                    <div class="text-sm text-blue-600">Basic</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">HTML5/CSS3</div>
+                    <div class="text-sm text-blue-600">Expert</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">React</div>
+                    <div class="text-sm text-blue-600">Expert</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Vue.js</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Angular</div>
+                    <div class="text-sm text-blue-600">Intermediate</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Node.js</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Express</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Flask</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Django</div>
+                    <div class="text-sm text-blue-600">Intermediate</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">MongoDB</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">PostgreSQL</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">GraphQL</div>
+                    <div class="text-sm text-blue-600">Intermediate</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">Docker</div>
+                    <div class="text-sm text-blue-600">Intermediate</div>
+                </div>
+                <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                    <div class="font-medium text-gray-800">AWS</div>
+                    <div class="text-sm text-blue-600">Advanced</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2 class="text-2xl font-bold mb-6 text-blue-600">Soft Skills</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="text-blue-600 text-3xl mb-4">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Team Leadership</h3>
+                <p class="text-gray-700">
+                    Experience managing development teams and fostering collaborative environments.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="text-blue-600 text-3xl mb-4">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Communication</h3>
+                <p class="text-gray-700">
+                    Clear and effective communication with technical and non-technical stakeholders.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="text-blue-600 text-3xl mb-4">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Problem Solving</h3>
+                <p class="text-gray-700">
+                    Creative approach to technical challenges and ability to think outside the box.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="text-blue-600 text-3xl mb-4">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Project Management</h3>
+                <p class="text-gray-700">
+                    Planning, coordinating, and delivering projects on time and within scope.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="text-blue-600 text-3xl mb-4">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Continuous Learning</h3>
+                <p class="text-gray-700">
+                    Commitment to staying updated with the latest technologies and best practices.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="text-blue-600 text-3xl mb-4">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Mentorship</h3>
+                <p class="text-gray-700">
+                    Passion for knowledge sharing and helping others develop their skills.
+                </p>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}

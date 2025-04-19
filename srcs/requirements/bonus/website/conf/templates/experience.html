@@ -1,179 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Work Experience</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #95a5a6;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .profile-title {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        nav {
-            background-color: #34495e;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav li {
-            margin: 0;
-            padding: 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            display: block;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #465c73;
-        }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 5px;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.5rem;
-        }
-        .job {
-            margin-bottom: 2rem;
-            border-left: 3px solid #3498db;
-            padding-left: 1.5rem;
-        }
-        .job-title {
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-            color: #2c3e50;
-            font-size: 1.2rem;
-        }
-        .job-company {
-            font-weight: bold;
-            color: #3498db;
-        }
-        .job-date {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        ul.achievements {
-            padding-left: 1.5rem;
-        }
-        ul.achievements li {
-            margin-bottom: 0.5rem;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="profile-container">
-            <div class="profile-pic">JD</div>
-            <h1>John Doe</h1>
-            <p class="profile-title">Senior Software Engineer</p>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">About</a></li>
-            <li><a href="/experience">Experience</a></li>
-            <li><a href="/education">Education</a></li>
-            <li><a href="/skills">Skills</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h2>Work Experience</h2>
-        
-        <div class="job">
-            <div class="job-title">Senior Software Engineer</div>
-            <div class="job-company">TechSolutions Inc.</div>
-            <div class="job-date">January 2022 - Present</div>
-            <ul class="achievements">
-                <li>Led a team of 5 developers to deliver a cloud-based analytics platform, resulting in a 30% increase in customer satisfaction.</li>
-                <li>Implemented CI/CD pipelines that reduced deployment time by 40% and improved code quality.</li>
-                <li>Architected and implemented microservices using Python and Docker, enhancing system scalability.</li>
-                <li>Mentored junior developers and conducted code reviews to maintain high code quality standards.</li>
+<!-- experience.html -->
+{% extends "base.html" %}
+{% block title %}Experience | John Doe{% endblock %}
+{% block experience_active %}active{% endblock %}
+
+{% block content %}
+<section class="mb-10">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6 text-blue-600">Professional Experience</h1>
+    <p class="text-lg text-gray-700 mb-10">
+        With over 7 years of industry experience, I've worked across various domains including fintech, e-commerce, and SaaS.
+        Below is a summary of my professional journey.
+    </p>
+    
+    <div class="space-y-12">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Senior Frontend Developer</h2>
+                <div class="text-blue-600 font-medium mt-2 md:mt-0">Jan 2022 - Present</div>
+            </div>
+            <h3 class="text-xl text-gray-600 mb-4">TechCorp Solutions</h3>
+            <p class="mb-4 text-gray-700">
+                Leading a team of 5 developers to build and maintain large-scale web applications for enterprise clients.
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Architected and implemented a component library that reduced development time by 40%</li>
+                <li>Optimized application performance, achieving a 60% improvement in load times</li>
+                <li>Mentored junior developers and established code review best practices</li>
+                <li>Collaborated with UX designers to create intuitive and accessible interfaces</li>
             </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">React</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">TypeScript</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Redux</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">GraphQL</span>
+            </div>
         </div>
         
-        <div class="job">
-            <div class="job-title">Software Engineer</div>
-            <div class="job-company">DataCraft Systems</div>
-            <div class="job-date">March 2019 - December 2021</div>
-            <ul class="achievements">
-                <li>Developed and maintained RESTful APIs using Flask and Django, serving over 100,000 daily requests.</li>
-                <li>Optimized database queries that improved application performance by 25%.</li>
-                <li>Collaborated with the UX team to implement responsive front-end designs using React.</li>
-                <li>Participated in agile development processes, including daily stand-ups and sprint planning.</li>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Full Stack Developer</h2>
+                <div class="text-blue-600 font-medium mt-2 md:mt-0">Mar 2019 - Dec 2021</div>
+            </div>
+            <h3 class="text-xl text-gray-600 mb-4">InnovateTech Inc.</h3>
+            <p class="mb-4 text-gray-700">
+                Developed and maintained multiple web applications for clients in the finance and healthcare sectors.
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Built a patient management system that improved clinic efficiency by 35%</li>
+                <li>Implemented secure payment processing solutions for a fintech startup</li>
+                <li>Created data visualization dashboards that provided insights for business decisions</li>
+                <li>Deployed and maintained cloud infrastructure on AWS</li>
             </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Vue.js</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Node.js</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Express</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">MongoDB</span>
+            </div>
         </div>
         
-        <div class="job">
-            <div class="job-title">Junior Developer</div>
-            <div class="job-company">Innovative Web Solutions</div>
-            <div class="job-date">June 2017 - February 2019</div>
-            <ul class="achievements">
-                <li>Assisted in the development of web applications using JavaScript, HTML, and CSS.</li>
-                <li>Created and maintained documentation for internal systems and client-facing products.</li>
-                <li>Fixed bugs and implemented new features for existing web applications.</li>
-                <li>Participated in code reviews and contributed to improving development processes.</li>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Web Developer</h2>
+                <div class="text-blue-600 font-medium mt-2 md:mt-0">Jun 2017 - Feb 2019</div>
+            </div>
+            <h3 class="text-xl text-gray-600 mb-4">Digital Creations Agency</h3>
+            <p class="mb-4 text-gray-700">
+                Created responsive websites and e-commerce solutions for small to medium businesses.
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Developed over 20 client websites from concept to deployment</li>
+                <li>Integrated e-commerce functionality with inventory management systems</li>
+                <li>Implemented SEO best practices, improving client search rankings</li>
+                <li>Created custom WordPress themes and plugins for content management</li>
             </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">HTML/CSS</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">JavaScript</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">PHP</span>
+                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">WordPress</span>
+            </div>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 John Doe | Software Engineer</p>
-    </footer>
-</body>
-</html>
+</section>
+{% endblock %}
