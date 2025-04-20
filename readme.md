@@ -6,12 +6,16 @@ A self-contained Docker infrastructure featuring a full web environment with Wor
 
 ## 📜 Project Constraints
 
-✅ Each service has:
-- A dedicated container
-- A custom Dockerfile (no pre-built images used except Alpine base)
+- Each service has a dedicated container
+- The containers must be built from the penultimate stable
+version of Alpine 
+- All services has a custom Dockerfile (no pre-built images used except Alpine base)
 - TLS (NGINX) using only TLSv1.2 or TLSv1.3
 - Built and orchestrated exclusively via `Makefile` + `docker-compose`
+- Volumes for the database, wordpress files and the website files
 - The volumes must be in `/home/$USER/data/`
+- A docker-network that establishes the connection between your containers
+- This domain name must be login.42.fr
 
 ---
 
@@ -109,8 +113,6 @@ To ensure you're always using the penultimate stable version of Alpine Linux, ru
 ```bash
 make update
 ```
-
-This will auto-update all `Dockerfile`s with the latest appropriate base image version.
 
 ---
 
