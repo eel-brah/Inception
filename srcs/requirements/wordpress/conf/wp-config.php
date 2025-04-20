@@ -4,10 +4,10 @@
  */
 
 // Database settings
-define('DB_NAME', 'wordpress_db');
+define('DB_NAME', getenv('WORDPRESS_DB_NAME')?: 'wordpress_db');
 define( 'DB_USER', trim(file_get_contents('/run/secrets/db_user')) );
 define( 'DB_PASSWORD', trim(file_get_contents('/run/secrets/db_user_password')) );
-define('DB_HOST', 'mariadb');
+define('DB_HOST', getenv('WORDPRESS_DB_HOST') ?: 'mariadb');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
