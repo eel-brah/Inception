@@ -23,7 +23,7 @@ version of Alpine
 
 | Service        | Description                                                                 |
 |----------------|-----------------------------------------------------------------------------|
-| **NGINX**      | Acts as a TLS-terminating reverse proxy (TLSv1.2/1.3).                      |
+| **NGINX**      | Acts as a secure reverse proxy (TLSv1.2/1.3).                      |
 | **WordPress**  | PHP-based CMS running with `php-fpm`, no NGINX inside.                      |
 | **MariaDB**    | Database service for WordPress.                                             |
 | **Redis**      | Caching system to optimize WordPress performance.                           |
@@ -31,6 +31,15 @@ version of Alpine
 | **Website**    | Simple Flask-based static website.                                          |
 | **Adminer**    | Web UI to manage MariaDB.                                                   |
 | **CAdvisor**   | Container resource usage and performance monitor.                           |
+
+
+NGINX acts as a secure reverse proxy, handling all incoming HTTPS traffic with strong encryption (TLSv1.2 and TLSv1.3 only). It performs the following:
+
+- Serves **WordPress** using FastCGI to forward PHP requests to the `php-fpm` backend.
+- Proxies **Adminer** for database management.
+- Serves the **Flask static website** via reverse proxy to the `website` container.
+- Uses strong SSL ciphers and security headers to ensure encrypted communication.
+- Mounts SSL cert/key securely using Docker secrets.
 
 ---
 
